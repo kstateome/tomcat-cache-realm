@@ -3,8 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.s24.tomcat</groupId>
     <artifactId>tomcat-cache-realm</artifactId>
+    <name>tomcat-cache-realm</name>
     <packaging>jar</packaging>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
     <description>A caching Tomcat realm</description>
     <url>https://github.com/shopping24/tomcat-cache-realm</url>
     <licenses>
