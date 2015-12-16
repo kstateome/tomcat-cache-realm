@@ -33,8 +33,11 @@ public class CachingRealm extends CombinedRealm {
    public Principal authenticate(String username, String credentials) {
       checkNotNull(username, "Pre-condition violated: username must not be null.");
 
+      // compute cache key
+      String key = username + ":" + credentials;
+      
       try {
-         return authCache.get(username, new Callable<Principal>() {
+         return authCache.get(key, new Callable<Principal>() {
             @Override
             public Principal call() throws Exception {
                return authenticateInternal(username, credentials);
