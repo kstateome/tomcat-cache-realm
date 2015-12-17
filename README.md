@@ -7,8 +7,9 @@ it might be a good idea to cache the underlying authentication infrastructure (L
 
 ## Use this project
 
-Download the project from XXX and drop the `jar-with-dependencies` into your Tomcat `/lib` folder.
-Then wrap your existing authentication realm(s) with the caching realm:
+Download the project from [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22tomcat-cache-realm%22) 
+and drop the `jar-with-dependencies` into your Tomcat `/lib` folder. Then wrap your existing authentication 
+realm(s) with the caching realm (in your `server.xml` or `context.xml`):
 
     <Realm className="com.s24.tomcat.CachingRealm">
        <Realm className="org.apache.catalina.realm.JNDIRealm" 
