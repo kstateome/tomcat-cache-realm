@@ -16,12 +16,13 @@ import com.google.common.cache.CacheBuilder;
  * A caching tomcat realm.
  * 
  * @author Shopping24 GmbH, Torsten Bøgh Köster (@tboeghk)
+ * modified by Anne von Raven
  */
 public class CachingRealm extends CombinedRealm {
 
    // default cache
    private Cache<String, Principal> authCache = CacheBuilder.newBuilder()
-         .expireAfterWrite(5, TimeUnit.MINUTES)
+         .expireAfterWrite(24, TimeUnit.HOURS)
          .build();
 
    /**
@@ -37,13 +38,14 @@ public class CachingRealm extends CombinedRealm {
       String key = username + ":" + credentials;
       
       try {
-         return authCache.get(key, new Callable<Principal>() {
-            @Override
-            public Principal call() throws Exception {
-               return authenticateInternal(username, credentials);
-            }
+         return authCache.get(key, () -> {
+            Principal auth = authenticateInternal(username, credentials);
+            // Guava cache does not accept null return values - recommendation is to throw an exception instead
+            if (auth == null) throw new ExecutionException(new Throwable("Invalid credentials"));
+            return auth;
          });
       } catch (ExecutionException e) {
+         // AvR 2019-05-21 is this really needed? If something went wrong above, it is quite certainly due to wrong credentials
          return authenticateInternal(username, credentials);
       }
    }
