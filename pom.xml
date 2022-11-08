@@ -4,7 +4,7 @@
     <artifactId>tomcat-cache-realm</artifactId>
     <name>tomcat-cache-realm</name>
     <packaging>jar</packaging>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.2</version>
     <description>A caching Tomcat realm</description>
     <url>https://github.com/shopping24/tomcat-cache-realm</url>
     <licenses>
@@ -19,6 +19,7 @@
         <connection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</connection>
         <developerConnection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</developerConnection>
         <url>https://github.com/kstateome/tomcat-cache-realm</url>
+    <tag>0.1.2</tag>
   </scm>
     <issueManagement>
         <system>Github Issues</system>
