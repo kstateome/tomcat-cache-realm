@@ -161,12 +161,6 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>31.1-jre</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>failureaccess</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
