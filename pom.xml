@@ -5,7 +5,7 @@
     <artifactId>tomcat-cache-realm</artifactId>
     <name>tomcat-cache-realm</name>
     <packaging>jar</packaging>
-    <version>KSU-1.0.0-SNAPSHOT</version>
+    <version>KSU-0.1.1-SNAPSHOT</version>
     <description>A caching Tomcat realm</description>
     <url>https://github.com/shopping24/tomcat-cache-realm</url>
     <licenses>
