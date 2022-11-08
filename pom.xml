@@ -19,8 +19,8 @@
     <scm>
         <connection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</connection>
         <developerConnection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</developerConnection>
-        <url>https://github.com/kstateome/idm</url>
-        <tag>3.18.52</tag>
+        <url>https://github.com/kstateome/tomcat-cache-realm</url>
+
     </scm>
     <issueManagement>
         <system>Github Issues</system>
