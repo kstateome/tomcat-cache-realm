@@ -22,7 +22,7 @@ public class CachingRealm extends CombinedRealm {
 
    // default cache
    private Cache<String, Principal> authCache = CacheBuilder.newBuilder()
-         .expireAfterWrite(24, TimeUnit.HOURS)
+         .expireAfterWrite(4, TimeUnit.MINUTES)
          .build();
 
    /**

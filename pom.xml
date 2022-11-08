@@ -5,7 +5,7 @@
     <artifactId>tomcat-cache-realm</artifactId>
     <name>tomcat-cache-realm</name>
     <packaging>jar</packaging>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>KSU-0.1.1-SNAPSHOT</version>
     <description>A caching Tomcat realm</description>
     <url>https://github.com/shopping24/tomcat-cache-realm</url>
     <licenses>
@@ -17,10 +17,10 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:shopping24/tomcat-cache-realm.git</connection>
-        <developerConnection>scm:git:git@github.com:shopping24/tomcat-cache-realm.git</developerConnection>
-        <url>https://github.com/shopping24/tomcat-cache-realm</url>
-        <tag>HEAD</tag>
+        <connection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</connection>
+        <developerConnection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</developerConnection>
+        <url>https://github.com/kstateome/idm</url>
+        <tag>3.18.52</tag>
     </scm>
     <issueManagement>
         <system>Github Issues</system>
@@ -105,6 +105,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <siteDirectory>${project.basedir}/src/site</siteDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <goals>deploy</goals>
+                    <tagNameFormat>@{version}</tagNameFormat>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -121,19 +143,91 @@
             <version>28.0-jre</version>
         </dependency>
     </dependencies>
-    
-    <distributionManagement>
-      <snapshotRepository>
-         <id>ossrh</id>
-         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      </snapshotRepository>
-      <repository>
-         <id>ossrh</id>
-         <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-      </repository>
-   </distributionManagement>
 
+    <distributionManagement>
+        <site>
+            <id>idm</id>
+            <url>file:///var/www/maven-site/tomcat-cache-realm</url>
+        </site>
+        <repository>
+            <id>ome-appdev-release</id>
+            <name>ome-appdev-release</name>
+            <url>https://artifactory.its.ksu.edu/artifactory/ome-appdev-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>ome-appdev-snapshot</id>
+            <name>ome-appdev-snapshot</name>
+            <url>https://artifactory.its.ksu.edu/artifactory/ome-appdev-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <additionalOptions>-Xdoclint:none</additionalOptions>
+                </configuration>
+                <reportSets>
+                    <reportSet><!-- by default, id = "default" -->
+                        <reports><!-- select non-aggregate reports -->
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!--  removing this until site is no longer public.
+               <plugin>
+                  <artifactId>maven-jxr-plugin</artifactId>
+                  <version>2.4</version>
+                  <reportSets>
+                      <reportSet>
+                          <id>aggregate</id>
+                          <inherited>false</inherited>
+                          <reports>
+                              <report>aggregate</report>
+                              <report>test-aggregate</report>
+                          </reports>
+                      </reportSet>
+                  </reportSets>
+              </plugin>  -->
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>5.3.2</version>
+                <reportSets>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+        </plugins>
+
+    </reporting>
    <profiles>
+       <profile>
+           <id>generate-site</id>
+           <distributionManagement>
+               <site>
+                   <id>${project.artifactId}-site</id>
+                   <name>Default Site</name>
+                   <url>./</url>
+               </site>
+           </distributionManagement>
+       </profile>
       <profile>
          <id>release</id>
          <build>
