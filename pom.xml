@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.ksu.idm</groupId>
     <artifactId>tomcat-cache-realm</artifactId>
     <name>tomcat-cache-realm</name>
     <packaging>jar</packaging>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <description>A caching Tomcat realm</description>
     <url>https://github.com/shopping24/tomcat-cache-realm</url>
     <licenses>
@@ -21,7 +20,8 @@
         <developerConnection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</developerConnection>
         <url>https://github.com/kstateome/tomcat-cache-realm</url>
 
-    </scm>
+      <tag>0.1.1</tag>
+  </scm>
     <issueManagement>
         <system>Github Issues</system>
         <url>${project.url}/issues</url>
