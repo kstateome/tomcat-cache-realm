@@ -19,8 +19,8 @@
     <scm>
         <connection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</connection>
         <developerConnection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</developerConnection>
-        <url>https://github.com/kstateome/idm</url>
-        <tag>3.18.52</tag>
+        <url>https://github.com/kstateome/tomcat-cache-realm</url>
+
     </scm>
     <issueManagement>
         <system>Github Issues</system>
@@ -126,6 +126,26 @@
                     <goals>deploy</goals>
                     <tagNameFormat>@{version}</tagNameFormat>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.5.2</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
