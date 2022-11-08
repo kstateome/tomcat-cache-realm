@@ -19,8 +19,6 @@
         <connection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</connection>
         <developerConnection>scm:git:https://${github.token}@github.com/kstateome/tomcat-cache-realm.git</developerConnection>
         <url>https://github.com/kstateome/tomcat-cache-realm</url>
-
-      <tag>HEAD</tag>
   </scm>
     <issueManagement>
         <system>Github Issues</system>
