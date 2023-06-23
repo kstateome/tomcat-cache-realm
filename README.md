@@ -20,6 +20,9 @@ By default, successful authentications are cached for 5 minutes. Use the `cacheS
 to supply [Google Guava cache builder specs](https://github.com/google/guava/blob/master/guava/src/com/google/common/cache/CacheBuilderSpec.java)
 to configure cache size and retention time. 
 
+**NOTE**
+This is currently being utilized in our Grouper tomcat environment to improve throughput on webservices and reduce load LDAP.
+
 ## Building the project
 
 This should install the current version into your local repository
